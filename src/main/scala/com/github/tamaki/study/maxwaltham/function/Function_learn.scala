@@ -34,6 +34,6 @@ object Function_learn {
   def ca(x: Int) = (y: Int) => x + y
 
   def adder(x: Int, y: Int) = x + y
-  val adder3_ = adder(3, _)
+  //val adder3_ = adder(3, _)
 
 }
