@@ -22,6 +22,6 @@ object FizzBuzz {
       case (0,_) => "Fizz"
       case (_, 0) => "Buzz"
       case _ => x.toString
-    }).foreach(println(_))
+    }) foreach println
   }
 }
