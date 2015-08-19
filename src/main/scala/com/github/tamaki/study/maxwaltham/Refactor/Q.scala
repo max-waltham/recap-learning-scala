@@ -10,6 +10,7 @@ object Q {
     q1(None)
     q3(Some(" kota "))
     q3(Some("  "))
+    q4
   }
 
   def findByName(name: String) = "id:" + name
@@ -72,6 +73,37 @@ object Q {
     }
   }
 
-  def q4 = "TODO"
+  def q4 = {
+    val values = List(1, 2, 3)
+
+    // bad
+    val r1 = values.length match {
+      case 0 => 0
+      case 1 =>
+        val h = values.head
+        println(h)
+        h
+      case 2 =>
+        val h1 = values(0)
+        val h2 = values(1)
+        h1 + h2
+      case 3 =>
+        val h1 = values(0)
+        val h3 = values(2)
+        h1 + h3
+    }
+
+    // good. case文で変数にバインドして使えるように考える
+    val r2 = values match {
+      case Nil => 0
+      case head :: Nil =>
+        println("head = " + head)
+        head
+      case first :: second :: Nil =>
+        first + second
+      case first :: _ :: third :: Nil =>
+        first + third
+    }
+  }
 
 }
