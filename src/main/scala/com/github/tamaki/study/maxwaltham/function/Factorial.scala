@@ -9,12 +9,12 @@ object Factorial {
 
   def factorial2(n: Int): Int = n match {
     case 0 => 1
-    case n => n * factorial2(n - 1)
+    case m => m * factorial2(n - 1)
   }
 
-  def factorial(n: Int): Int = {
+  def factorial(n: Int): BigInt = {
     @tailrec
-    def go(m: Int, acc: Int): Int = m match {
+    def go(m: Int, acc: BigInt): BigInt = m match {
       case 1 => acc
       case l => go(l - 1, l * acc)
     }
@@ -23,7 +23,7 @@ object Factorial {
   }
 
   def main(args: Array[String]) = {
-    println(factorial(30))
+    println(factorial(10000))
   }
 
 }

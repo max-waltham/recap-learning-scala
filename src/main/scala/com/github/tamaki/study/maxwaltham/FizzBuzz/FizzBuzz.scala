@@ -23,5 +23,7 @@ object FizzBuzz {
       case (_, 0) => "Buzz"
       case _ => x.toString
     }) foreach println
+
+//    fizzBuzz(1000)
   }
 }

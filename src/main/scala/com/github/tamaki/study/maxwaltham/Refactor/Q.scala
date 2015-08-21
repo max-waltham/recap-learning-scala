@@ -11,6 +11,10 @@ object Q {
     q3(Some(" kota "))
     q3(Some("  "))
     q4
+
+    val l = List(1,2)
+    l map (_ + 1)
+    println(l)
   }
 
   def findByName(name: String) = "id:" + name
