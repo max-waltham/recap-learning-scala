@@ -20,32 +20,32 @@ object Q5 {
   val x6: Option[String] = Some("not a number")
 
 
-  def q5_strTest(name: String, str: Any): Option[(String, String)] = str match {
-    case "" => Some(name -> "error.required")
-    case x: String => None
-    case None => Some(name -> "error.required")
+  def q5_strTest(name: String, str: Any): Option[Map[String, String]] = str match {
+    case "" => Some(Map(name -> "error.required"))
+    case x: String => None // test pass
+    case None => Some(Map(name -> "error.required"))
     case Some(x: String) => q5_strTest(name, x)
   }
 
-  def q5_numStrTest(name: String, optStr: Option[String]): Option[(String, String)] = optStr match {
-    case None => Some(name -> "error.number")
+  def q5_numStrTest(name: String, optStr: Option[String]): Option[Map[String, String]] = optStr match {
+    case None => Some(Map(name -> "error.number"))
     case Some(numStr) => try {
       numStr.toInt
-      None
+      None // test pass
     } catch {
       case e: Exception =>
-        Some(name -> "error.number")
+        Some(Map(name -> "error.number"))
     }
   }
 
   def q5_good = {
-
-    q5_strTest("x1", x1) foreach println
-    q5_strTest("x2", x2) foreach println
-    q5_strTest("x3", x3) foreach println
-    q5_strTest("x4", x4) foreach println
-    q5_numStrTest("x5", x5) foreach println
-    q5_numStrTest("x6", x6) foreach println
+    val answer = q5_strTest("x1", x1) ++
+      q5_strTest("x2", x2) ++
+      q5_strTest("x3", x3) ++
+      q5_strTest("x4", x4) ++
+      q5_numStrTest("x5", x5) ++
+      q5_numStrTest("x6", x6)
+    println(answer.mkString(","))
 
   }
 
